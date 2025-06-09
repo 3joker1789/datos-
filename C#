@@ -1,0 +1,112 @@
+using System;
+
+// =============================================
+// ESTUDIANTE: [Tu Nombre Completo]
+// FECHA: [Fecha de Entrega]
+// HOJA: 1/1
+// REPOSITORIO: [URL de tu repositorio GitHub]
+// =============================================
+
+namespace FigurasGeometricas
+{
+    /// <summary>
+    /// Clase que representa un círculo y calcula su área/perímetro
+    /// </summary>
+    public class Circulo
+    {
+        // Campo privado que encapsula el radio del círculo
+        private double radio;
+
+        /// <summary>
+        /// Constructor que inicializa el círculo con un radio específico
+        /// </summary>
+        /// <param name="radio">Radio del círculo (debe ser positivo)</param>
+        public Circulo(double radio)
+        {
+            // Validación para evitar valores negativos
+            if (radio <= 0)
+                throw new ArgumentException("El radio debe ser positivo");
+                
+            this.radio = radio;
+        }
+
+        /// <summary>
+        /// Calcula el área del círculo usando la fórmula π * r²
+        /// </summary>
+        /// <returns>Área del círculo como double</returns>
+        public double CalcularArea()
+        {
+            return Math.PI * radio * radio;
+        }
+
+        /// <summary>
+        /// Calcula el perímetro (circunferencia) usando la fórmula 2 * π * r
+        /// </summary>
+        /// <returns>Perímetro del círculo como double</returns>
+        public double CalcularPerimetro()
+        {
+            return 2 * Math.PI * radio;
+        }
+    }
+
+    /// <summary>
+    /// Clase que representa un rectángulo y calcula su área/perímetro
+    /// </summary>
+    public class Rectangulo
+    {
+        // Campos privados que encapsulan las dimensiones
+        private double baseRect;
+        private double altura;
+
+        /// <summary>
+        /// Constructor que inicializa el rectángulo con base y altura
+        /// </summary>
+        /// <param name="baseRect">Base del rectángulo (debe ser positiva)</param>
+        /// <param name="altura">Altura del rectángulo (debe ser positiva)</param>
+        public Rectangulo(double baseRect, double altura)
+        {
+            // Validación de valores positivos
+            if (baseRect <= 0 || altura <= 0)
+                throw new ArgumentException("Base y altura deben ser positivas");
+                
+            this.baseRect = baseRect;
+            this.altura = altura;
+        }
+
+        /// <summary>
+        /// Calcula el área usando la fórmula: base * altura
+        /// </summary>
+        /// <returns>Área del rectángulo como double</returns>
+        public double CalcularArea()
+        {
+            return baseRect * altura;
+        }
+
+        /// <summary>
+        /// Calcula el perímetro usando la fórmula: 2 * (base + altura)
+        /// </summary>
+        /// <returns>Perímetro del rectángulo como double</returns>
+        public double CalcularPerimetro()
+        {
+            return 2 * (baseRect + altura);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Ejemplo de uso del círculo
+            Circulo miCirculo = new Circulo(5.0);
+            Console.WriteLine("CÍRCULO (radio=5)");
+            Console.WriteLine($"Área: {miCirculo.CalcularArea():F2}");
+            Console.WriteLine($"Perímetro: {miCirculo.CalcularPerimetro():F2}\n");
+
+            // Ejemplo de uso del rectángulo
+            Rectangulo miRectangulo = new Rectangulo(4.0, 6.0);
+            Console.WriteLine("RECTÁNGULO (base=4, altura=6)");
+            Console.WriteLine($"Área: {miRectangulo.CalcularArea():F2}");
+            Console.WriteLine($"Perímetro: {miRectangulo.CalcularPerimetro():F2}");
+        }
+    }
+}
